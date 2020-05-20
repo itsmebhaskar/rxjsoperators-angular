@@ -1,4 +1,4 @@
-import { of, Observable } from 'rxjs'; 
+import { of, Observable, from } from 'rxjs'; 
 import { map,filter } from 'rxjs/operators';
 
 //map operators
@@ -11,4 +11,16 @@ sequence.pipe(map((num)=>num*num)).subscribe(res=>{
 
 //filter operators
 
-var fruits:Observable<string>=of('apple','orange','banana','mango').pipe(filter(fru=>fru.length>4));
+var fruits:Observable<string>=of('apple','orange','banana','mango').pipe(filter(fru=>fru.length<6));
+
+fruits.subscribe(res=>{
+  console.log(res);
+})
+
+//from operators
+
+var cars=from(['volvo','merc','bmw']).subscribe(car=>console.log(car));
+
+
+
+//
