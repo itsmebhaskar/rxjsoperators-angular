@@ -1,9 +1,14 @@
-import { of } from 'rxjs'; 
-import { map } from 'rxjs/operators';
+import { of, Observable } from 'rxjs'; 
+import { map,filter } from 'rxjs/operators';
+
+//map operators
+var sequence:Observable<number>=of(1,2,3,4);
+
+sequence.pipe(map((num)=>num*num)).subscribe(res=>{
+  console.log(res);
+})
 
 
-const source = of('World').pipe(
-  map(x => `Hello ${x}!`)
-);
+//filter operators
 
-source.subscribe(x => console.log(x));
+var fruits:Observable<string>=of('apple','orange','banana','mango').pipe(filter(fru=>fru.length>4));
